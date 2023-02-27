@@ -8,6 +8,8 @@
 
 #CATS
 
+100.times. do Cat.create()
+
 # name
 Faker::Creature::Cat.name
 #address

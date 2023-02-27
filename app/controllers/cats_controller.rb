@@ -5,7 +5,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
-    @owner = @cat.user
+    @user = @cat.user
   end
 
   def new
@@ -14,6 +14,7 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.new(cat_params)
+    @user = @cat.user
     if @cat.save
       redirect_to cat_path(@cat)
     else

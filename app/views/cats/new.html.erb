@@ -1,1 +1,6 @@
-<h1>banana</h1>
+<h1>List your angry furball</h1>
+<%= simple_form_for [@cat] do |f| %>
+ <%= f.input :name %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Create new List", class: "btn btn-primary" %>
+<% end %>

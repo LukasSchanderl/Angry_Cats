@@ -8,5 +8,18 @@ class CatsController < ApplicationController
     @owner = @cat.user
   end
 
+  def new
+    @cat = Cat.new
+  end
+
+  def create
+    @cat = Cat.new(cat_params)
+    if @cat.save
+      redirect_to cat_path(@cat)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   private
 end

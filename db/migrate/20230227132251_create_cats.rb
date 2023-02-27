@@ -7,6 +7,7 @@ class CreateCats < ActiveRecord::Migration[7.0]
       t.integer :fluffiness
       t.string :color
       t.references :user, null: false, foreign_key: true
+      t.float :price
 
       t.timestamps
     end

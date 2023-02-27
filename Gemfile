@@ -9,6 +9,9 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 #Devise for authentication
 gem "devise"
 
+#calendar
+gem 'flatpickr', '~> 2.3', '>= 2.3.5.0'
+
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails" # Uncomment this line
 

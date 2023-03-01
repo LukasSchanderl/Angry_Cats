@@ -33,7 +33,6 @@ User.destroy_all
 puts "Creating database..."
 
 # result = Cloudinary::Api.resources_by_tag('cats')
-puts result["resources"][i]["asset_id"]
 result = Cloudinary::Api.resources[0]
 
 5.times do
@@ -47,7 +46,7 @@ i = 0
 
 5.times do
   cat = Cat.new(
-    pickup_address: berlin_address[i],
+    address: berlin_address[i],
     name: Faker::Creature::Cat.name,
     angriness_level: Faker::Number.within(range: 1..5),
     fluffiness: Faker::Number.within(range: 1..5),

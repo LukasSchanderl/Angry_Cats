@@ -29,6 +29,9 @@
     color:#cecece;
     margin-bottom:0.5em;
   }
+  .card-body {
+    padding-left: 0;
+  }
 }
 
 #aside-right {
@@ -47,8 +50,10 @@
   }
   img:nth-child(3) {
     background-color: #DFDFDF;
-    min-height: 400px;
     margin-bottom: 16px;
+    width: 100%;
+    object-fit: cover;
+    padding: 0 5px 0 5px;
   }
 }
 
@@ -67,6 +72,11 @@
   font-weight:300;
 }
 
-ol.breadcrumb  {
-  margin-bottom: 0 !important;
+.breadcrumb  {
+  ol {
+    margin-bottom: 0 !important;
+    }
+  a {
+  text-decoration: none;
+  }
 }

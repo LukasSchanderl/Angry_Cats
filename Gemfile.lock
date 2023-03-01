@@ -117,11 +117,7 @@ GEM
     erubi (1.12.0)
     execjs (2.8.1)
     ffi (1.15.5)
-<<<<<<< HEAD
     flatpickr (2.6.3.0)
-=======
-    flatpickr (2.3.5.0)
->>>>>>> 0736fdd003118ef719377a0d02c1804d0ce827a0
     font-awesome-sass (6.3.0)
       sassc (~> 2.0)
     globalid (1.1.0)

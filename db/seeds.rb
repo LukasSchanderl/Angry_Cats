@@ -38,7 +38,7 @@ puts "Creating database..."
 
 15.times do
   user = User.create(
-    password: "1234567",
+    password: "123456",
     email: Faker::Internet.email
   )
 end
@@ -47,12 +47,13 @@ i = 0
 
 15.times do
   cat = Cat.new(
-    address: berlin_address[i],
+    address: "#{berlin_address[i]}, Berlin",
     name: Faker::Creature::Cat.name,
     angriness_level: Faker::Number.within(range: 1..5),
     fluffiness: Faker::Number.within(range: 1..5),
     color: Faker::Color.color_name,
-    price: Faker::Number.decimal(l_digits: 2),
+    description: Faker::Quotes::Shakespeare.hamlet_quote,
+    price: Faker::Number.decimal(l_digits: 2)
   )
   cat.photo.attach(io: URI.open("https://cataas.com/cat"), filename: "test")
   cat.user = User.all[i]

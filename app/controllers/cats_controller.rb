@@ -33,10 +33,6 @@ class CatsController < ApplicationController
 
   private
   def cat_params
-<<<<<<< HEAD
     params.require(:cat).permit(:name, :pickup_address, :angriness_level, :fluffiness, :color, :price, :photo, :description)
-=======
-    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo)
->>>>>>> master
   end
 end

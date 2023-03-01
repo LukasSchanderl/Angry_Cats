@@ -66,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_115000) do
     t.string "bio"
     t.float "latitude"
     t.float "longitude"
+    t.text "description"
     t.index ["user_id"], name: "index_cats_on_user_id"
   end
 

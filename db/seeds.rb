@@ -21,7 +21,7 @@ berlin_address = [
   "Lindenstraße 44",
   "Genslerstraße 29",
   "Rosenthaler Str. 31"
-  ]
+]
 
 require "open-uri"
 require "faker"
@@ -33,8 +33,8 @@ User.destroy_all
 puts "Creating database..."
 
 # result = Cloudinary::Api.resources_by_tag('cats')
-puts result["resources"][i]["asset_id"]
-result = Cloudinary::Api.resources[0]
+# puts result["resources"][i]["asset_id"]
+# result = Cloudinary::Api.resources[0]
 
 5.times do
   user = User.create(
@@ -53,10 +53,11 @@ i = 0
     fluffiness: Faker::Number.within(range: 1..5),
     color: Faker::Color.color_name,
     price: Faker::Number.decimal(l_digits: 2),
+    description: Faker::Quotes::Shakespeare.hamlet_quote,
   )
   cat.photo.attach(io: URI.open("https://cataas.com/cat"), filename: "test")
   cat.user = User.all[i]
-  cat.save
+  cat.save!
 
   i += 1
 end

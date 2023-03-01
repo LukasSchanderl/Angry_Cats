@@ -36,7 +36,7 @@ puts "Creating database..."
 # puts result["resources"][i]["asset_id"]
 # result = Cloudinary::Api.resources[0]
 
-5.times do
+15.times do
   user = User.create(
     password: "1234567",
     email: Faker::Internet.email
@@ -45,7 +45,7 @@ end
 
 i = 0
 
-5.times do
+15.times do
   cat = Cat.new(
     address: berlin_address[i],
     name: Faker::Creature::Cat.name,

@@ -2,10 +2,11 @@ class CatsController < ApplicationController
   def index
     @cats = Cat.all
 
-    @markers = @cats.geocoded.map do |cat|
+    @markers = @cats.map do |cat|
       {
-        lat: cat.latitude,
-        lng: cat.longitude
+        # [...]
+        info_window_html: render_to_string(partial: "info_window", locals: {cat: cat}),
+        marker_html: render_to_string(partial: "marker", locals: {cat: cat}) # Pass the flat to the partial
       }
     end
   end
@@ -32,6 +33,10 @@ class CatsController < ApplicationController
 
   private
   def cat_params
+<<<<<<< HEAD
     params.require(:cat).permit(:name, :pickup_address, :angriness_level, :fluffiness, :color, :price, :photo, :description)
+=======
+    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo)
+>>>>>>> master
   end
 end

@@ -2,8 +2,8 @@
 <%= simple_form_for [@cat] do |f| %>
   <%= f.input :name %>
   <%= f.input :pickup_address %>
-  <%= f.input :angriness_level, :collection => 1..10, :prompt => "Angriness level" %>
-  <%= f.input :fluffiness, :collection => 1..10, :prompt => "Fluffiness level" %>
+  <%= f.input :angriness_level, :collection => 1..5, :prompt => "Angriness level" %>
+  <%= f.input :fluffiness, :collection => 1..5, :prompt => "Fluffiness level" %>
   <%= f.input :color, :collection => ["red", "yellow", "green", "grey", "orange"] %>
   <%= f.input :price %>
   <%= f.input :photo, as: :file %>

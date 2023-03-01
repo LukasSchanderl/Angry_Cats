@@ -33,7 +33,6 @@ User.destroy_all
 puts "Creating database..."
 
 # result = Cloudinary::Api.resources_by_tag('cats')
-puts result["resources"][i]["asset_id"]
 result = Cloudinary::Api.resources[0]
 
 5.times do

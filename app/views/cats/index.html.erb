@@ -11,8 +11,7 @@
   <% end %>
 </div>
 
-
-    <div class="accordion mb-5" id="accordionExample">
+    <div class="accordion mb-5" id="accordionExample" >
       <div class="accordion-item">
         <h2 class="accordion-header" id="headingOne">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -24,75 +23,82 @@
 
 
               <!-- accordion content below //-->
-              <div>
+                    <div>
 
                     <h1 class="mx-auto">Filters</h1>
                     <hr>
-                      <div class="row align-items-start">
+                                            <form action="" data-controller="search-filter" style="dosplay:flex!important">
 
+                      <div class="row align-items-start">
                           <div class="col-2">
                             Colour
                               <!-- checkboxes //-->
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                  Red
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" >
-                                <label class="form-check-label" for="flexCheckChecked">
-                                  Black
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" >
-                                <label class="form-check-label" for="flexCheckChecked">
-                                  White
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" >
-                                <label class="form-check-label" for="flexCheckChecked">
-                                  Mixed
-                                </label>
+
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                Red
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" >
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Black
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" >
+                              <label class="form-check-label" for="flexCheckChecked">
+                                White
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" >
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Mixed
+                              </label>
+                            </div>
                           </div>
-                      </div>
 
 
-                      <div class="col-2">
-                                <!-- sliders //-->
-                                <label for="fluffiness" class="form-label">Fluffiness</label>
-                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="fluffiness">
-                                <output>3</output>
+                          <div class="col-2">
+                                    <!-- sliders //-->
+                                    <label for="fluffiness" class="form-label">Fluffiness</label>
+                                    <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="fluffiness">
+                                    <output>3</output>
+                            </div>
+
+                          <div class="col-2">
+                                    <label for="angriness" class="form-label">Angriness</label>
+                                    <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="angriness">
+                                    <output>3</output>
                         </div>
 
-                      <div class="col-2">
-                                <label for="angriness" class="form-label">Angriness</label>
-                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="angriness">
-                                <output>3</output>
-                    </div>
+                        <div class="col-2">
+                                    <label for="price" class="form-label">Price limit</label>
+                                    <input class="form-range" type="range" value="20" min="1" max="200" step="1" oninput="this.nextElementSibling.value = this.value" id="price">
+                                    <output>20</output>
+                        </div>
 
-                    <div class="col-2">
-                                <label for="price" class="form-label">Price limit</label>
-                                <input class="form-range" type="range" value="20" min="1" max="200" step="1" oninput="this.nextElementSibling.value = this.value" id="price">
-                                <output>20</output>
-                    </div>
+                          <div class="col-4">
+                                    <label for="distance" class="form-label">Distance (in km)</label>
+                                    <input class="form-range" type="range" value="20" min="1" max="40" step="1" oninput="this.nextElementSibling.value = this.value" id="distance">
+                                    <output>20</output>
 
-                      <div class="col-4">
-                                <label for="distance" class="form-label">Distance (in km)</label>
-                                <input class="form-range" type="range" value="20" min="1" max="40" step="1" oninput="this.nextElementSibling.value = this.value" id="distance">
-                                <output>20</output>
-                    </div>
-                  </div>
-                </div>
+                            </div>
+                          </div>
+
+<br>
+                          <button type="button" class="btn btn-primary">Apply filters</button>
+
+                        </form>
+                        </div>
+                        </div>
+
               <!-- accordion content end //-->
 
           </div>
         </div>
-      </div>
-
-
     </div>
 
 

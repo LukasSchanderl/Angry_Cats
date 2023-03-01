@@ -63,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_28_103738) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bio"
     t.index ["user_id"], name: "index_cats_on_user_id"
   end
 

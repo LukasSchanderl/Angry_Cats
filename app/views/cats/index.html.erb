@@ -1,0 +1,144 @@
+<div class="search-container">
+
+  <h1 class="mx-auto">Find your perfect angry cat!</h1>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+    <div class="search-form-control form-group">
+      <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+      <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+      </button>
+    </div>
+  <% end %>
+</div>
+
+
+    <div class="accordion mb-5" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Search filters
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body filters">
+
+
+              <!-- accordion content below //-->
+              <div>
+
+                    <h1 class="mx-auto">Filters</h1>
+                    <hr>
+                      <div class="row align-items-start">
+
+                          <div class="col-2">
+                            Colour
+                              <!-- checkboxes //-->
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                  Red
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" >
+                                <label class="form-check-label" for="flexCheckChecked">
+                                  Black
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" >
+                                <label class="form-check-label" for="flexCheckChecked">
+                                  White
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" >
+                                <label class="form-check-label" for="flexCheckChecked">
+                                  Mixed
+                                </label>
+                          </div>
+                      </div>
+
+
+                      <div class="col-2">
+                                <!-- sliders //-->
+                                <label for="fluffiness" class="form-label">Fluffiness</label>
+                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="fluffiness">
+                                <output>3</output>
+                        </div>
+
+                      <div class="col-2">
+                                <label for="angriness" class="form-label">Angriness</label>
+                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="angriness">
+                                <output>3</output>
+                    </div>
+
+                    <div class="col-2">
+                                <label for="price" class="form-label">Price limit</label>
+                                <input class="form-range" type="range" value="20" min="1" max="200" step="1" oninput="this.nextElementSibling.value = this.value" id="price">
+                                <output>20</output>
+                    </div>
+
+                      <div class="col-4">
+                                <label for="distance" class="form-label">Distance (in km)</label>
+                                <input class="form-range" type="range" value="20" min="1" max="40" step="1" oninput="this.nextElementSibling.value = this.value" id="distance">
+                                <output>20</output>
+                    </div>
+                  </div>
+                </div>
+              <!-- accordion content end //-->
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+
+<br>
+  <!-- container for search result and map below //-->
+
+<div class="container">
+  <div class="row align-items-start">
+  <!-- search result column below //-->
+    <div class="col-8">
+      <h1>Top 10 angriest cats</h1>
+          <hr>
+          <div class="cards">
+          <% @cats.each do |cat| %>
+
+
+          <div class="card">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= cat.name %> </h5>
+              <p class="card-text">Cat bio</p>
+              <a href="#" class="btn btn-primary">Book this cat</a>
+            </div>
+          </div>
+
+          <% end %>
+        </div>
+
+
+
+    </div>
+    <!-- map column below //-->
+<div class="col-4">
+<h1>Find them on the map</h1>
+          <hr>
+<img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoic2ViaWJhc3RpIiwiYSI6ImNsZHlkN2JleTBicWYzb253dndxeHd4ZmEifQ.1NocQZBKvIQofj_jF7YOZg' style="width:100%">    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+</div>

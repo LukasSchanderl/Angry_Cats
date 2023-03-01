@@ -47,7 +47,7 @@ i = 0
 
 15.times do
   cat = Cat.new(
-    address: "#{berlin_address[i]}, Berlin",
+    address: berlin_address[i],
     name: Faker::Creature::Cat.name,
     angriness_level: Faker::Number.within(range: 1..5),
     fluffiness: Faker::Number.within(range: 1..5),

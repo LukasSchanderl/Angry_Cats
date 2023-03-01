@@ -1,6 +1,6 @@
-class AddCoordinatesToFlats < ActiveRecord::Migration[7.0]
+class AddCoordinatesToCats < ActiveRecord::Migration[7.0]
   def change
-    add_column :flats, :latitude, :float
-    add_column :flats, :longitude, :float
+    add_column :cats, :latitude, :float
+    add_column :cats, :longitude, :float
   end
 end

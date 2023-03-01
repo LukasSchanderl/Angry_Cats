@@ -1,1 +1,18 @@
-<h1>banana</h1>
+<h1>List your angry furball</h1>
+<%= simple_form_for [@cat] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :pickup_address %>
+  <%= f.input :angriness_level, :collection => 1..10, :prompt => "Angriness level" %>
+  <%= f.input :fluffiness, :collection => 1..10, :prompt => "Fluffiness level" %>
+  <%= f.input :color, :collection => ["red", "yellow", "green", "grey", "orange"] %>
+  <%= f.input :price %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
+
+<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
+<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
+<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
+<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
+<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
+<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>

@@ -38,7 +38,7 @@ puts "Creating database..."
 
 15.times do
   user = User.create(
-    password: "1234567",
+    password: "123456",
     email: Faker::Internet.email
   )
 end
@@ -47,7 +47,7 @@ i = 0
 
 15.times do
   cat = Cat.new(
-    address: berlin_address[i],
+    address: "#{berlin_address[i]}, Berlin",
     name: Faker::Creature::Cat.name,
     angriness_level: Faker::Number.within(range: 1..5),
     fluffiness: Faker::Number.within(range: 1..5),

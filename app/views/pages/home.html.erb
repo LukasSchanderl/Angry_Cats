@@ -1,60 +1,84 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "background.png" %>');">
-  <div class="container">
-    <%= link_to "SEARCH   BAR", cat_path(1), class: 'btn btn-primary' %>
+<!-- Hero -->
+<div class="p-5 text-center bg-image banner rounded-3" style="
+    background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "background.png" %>');
+    height: 400px;">
+  <div class="mask">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <h1 class="mb-5">Heading</h1>
+        <h4 class="mb-3">Subheading</h4>
+        <span><%= link_to "SEARCH BAR", cats_path, class: 'btn btn-outline-light btn-lg'%></span>
+      </div>
+    </div>
   </div>
 </div>
+<!-- Hero -->
+
+
 
 <div class="container">
+
+    <div class="row mt-5">
+      <div class="col-lg-12 text-center">
+        <h3>Sometimes all it takes is an angry cat<br></h3>
+        <p>For yourself or your hideous neighbour,<br>for a day or for the whole month.<br>Rent a variety of nasty felines on angrycat.org</p>
+        <p>Get ready for the next scratch</p>
+      </div>
+    </div>
+
+    <div class="row text-center mt-5">
+      <h4>Top 3 Angriest Cats</h4>
+      <div class="col-lg-12 d-flex justify-content-around gx-3 mt-3">
+          <div class="col-sm-3">
+            <div class="card my-8">
+                <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
+                <div class="card-body">
+                  <h6 class="card-title text-center">Voldemort</h6>
+                  <%= link_to "Book me", cat_path(@cat), class: 'btn btn-primary' %>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="card my-8">
+                <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
+                <div class="card-body">
+                  <h6 class="card-title text-center">Saruman</h6>
+                  <%= link_to "Book me", cat_path(@cat), class: 'btn btn-primary' %>
+                </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="card my-8">
+                <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
+                <div class="card-body">
+                  <h6 class="card-title text-center">Mephisto</h6>
+                  <%= link_to "Book me", cat_path(@cat), class: 'btn btn-primary' %>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
   <div class="row">
-    <h4 class="m-3">Top 3 angriest cats</h4>
-      <hr>
-
-  <div class="col-lg-12 text-center">
-    <h3>Sometimes all it takes is an agry cat<br></h3>
-    <p>For yourself or your hideous neighbour,<br>for a day or for the whole month.<br>Rent a variety of nasty felines on agrycats.org<br>
-    <hr>Get ready for the next scratch</p>
-  </div>
-
-  <div class="col-lg-12 d-flex justify-content-between gx-3 text-center">
-
-      <div class="col-sm-3">
-        <div class="card my-8">
-            <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
-            <div class="card-body">
-              <h5 class="card-title text-center">Voldemort</h5>
-              <%= link_to "Book me", cat_path(1), class: 'btn btn-primary' %>
-            </div>
-        </div>
+    <div class="col-lg-6 text-center mt-5">
+      <div class="rounded-3 bg-primary p-3">
+        <h4>How It Works</h4>
+        <ul class="list-unstyled">
+          <li class="list-group-item">1. Look for an angry cat in your neighborhood</li>
+          <li class="list-group-item">2. Send a request to the owner</li>
+          <li class="list-group-item">3. Go pick the angry creature up and... deal with it!</li>
+        </ul>
       </div>
+    </div>
 
-      <div class="col-sm-3">
-        <div class="card my-8">
-            <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
-            <div class="card-body">
-              <h5 class="card-title text-center">Saruman</h5>
-              <%= link_to "Book me", cat_path(1), class: 'btn btn-primary' %>
-            </div>
-        </div>
+    <div class="col-lg-6 text-center mt-5">
+      <div class="rounded-3 bg-primary p-3">
+        <h4>What Our Customers Say</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illo expedita, excepturi nihil porro cum aperiam quod voluptates quasi hic!</p>
       </div>
-
-      <div class="col-sm-3">
-        <div class="card my-8">
-            <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
-            <div class="card-body">
-              <h5 class="card-title text-center">Mephisto</h5>
-              <%= link_to "Book me", cat_path(1), class: 'btn btn-primary' %>
-            </div>
-        </div>
-      </div>
-  </div>
-
-
-  <div class="col-lg-6 mt-3 text-center">
-      <h3>Sometimes all it takes is an agry cat<br></h3>
-  </div>
-
-  <div class="col-lg-6 mt-3 text-center">
-      <h3>Sometimes all it takes is an agry cat<br></h3>
+    </div>
   </div>
 
 </div>

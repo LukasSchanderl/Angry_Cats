@@ -3,6 +3,6 @@ class Cat < ApplicationRecord
   has_many :bookings
   has_one_attached :photo
 
-  # geocoded_by :pickup_address
-  # after_validation :geocode, if: :will_save_change_to_address?
+  geocoded_by :pickup_address
+  after_validation :geocode, if: :will_save_change_to_pickup_address?
 end

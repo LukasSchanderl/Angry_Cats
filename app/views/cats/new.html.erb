@@ -1,5 +1,5 @@
 <h1>List your angry furball</h1>
-<%= simple_form_for [@cat] do |f| %>
+<%= simple_form_for(@cat) do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
   <%= f.input :angriness_level, :collection => 1..10, :prompt => "Angriness level" %>

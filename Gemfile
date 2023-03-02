@@ -20,6 +20,9 @@ gem 'flatpickr', '~> 2.3', '>= 2.3.5.0'
 #cloudinary
 gem "cloudinary"
 
+#search gem
+gem "pg_search"
+
 #private keys
 gem "dotenv-rails", groups: [:development, :test]
 

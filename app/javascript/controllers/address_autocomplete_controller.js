@@ -8,7 +8,6 @@ export default class extends Controller {
   static targets = ["address"]
 
   connect() {
-    [...]
     this.geocoder.on("result", event => this.#setInputValue(event))
     this.geocoder.on("clear", () => this.#clearInputValue())
   }

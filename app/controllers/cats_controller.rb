@@ -2,7 +2,11 @@ class CatsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+    if params[:query].present?
       @cats = Cat.search_by_address(params[:search][:address])
+    else
+      @cats = Cat.all
+    end
 
     @markers = @cats.geocoded.map do |cat|
       {

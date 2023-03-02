@@ -22,8 +22,15 @@
   <% if params[:query] == "my_cats" || params[:query].nil? %>
     <p>these are my cats PLACEHOLDER</p>
     <% @cats.each do |cat| %>
-      <%= cl_image_tag cat.photo.key, class: "photo-grid-img card-img-top" %>
-      <h5 class="card-title"><%= cat.name %> </h5>
+      <div class="card">
+        <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= cat.name %> </h5>
+          <p class="card-text">
+          <%= cat.description.first(90) %>...</p>
+          <a href="/cats/<%= cat.id %>" class="btn btn-primary">Book this cat</a>
+        </div>
+      </div>
     <% end %>
 
   <% elsif params[:query] == "my_bookings" %>

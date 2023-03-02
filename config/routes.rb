@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   resources :cats do
     resources :bookings
   end
-  resources :users do
-    resources :bookings, only: [:new, :create]
-  end
 
   resources :bookings, only: [:show]
+  get "dashboard", to: "pages#dashboard", as: :dashboard
 end

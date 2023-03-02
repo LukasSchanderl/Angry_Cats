@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  
+
   def index
     @cats = Cat.all
 
@@ -28,7 +28,6 @@ class CatsController < ApplicationController
     @cat.user = current_user
     if @cat.save
       redirect_to cat_path(@cat)
-      raise
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,6 +35,6 @@ class CatsController < ApplicationController
 
   private
   def cat_params
-    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo)
+    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo, :description)
   end
 end

@@ -1,31 +1,33 @@
-<ul class="nav nav-tabs">
-  <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="?query=my_cats">My cats</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="?query=my_bookings">Cats I rented</a>
-  </li>
-</ul>
+<div class='main-content'>
+  <div class="row">
+  </div>
 
-<% if params[:query] == "my_cats" || params[:query].nil? %>
-  <p>these are my cats PLACEHOLDER</p>
-  <%= @user_cats.each do |cat| %>
-    
+    <div class="card-product">
+      <img src="https://get.pxhere.com/photo/man-person-people-hair-white-male-guy-portrait-model-young-human-fashion-lifestyle-smile-caucasian-face-cool-glasses-expression-sexy-style-body-handsome-good-looking-attractive-emotion-adult-success-confident-portrait-photography-facial-hair-vision-care-1387382.jpg" />
+      <div class="card-product-infos">
+        <h2>Jane Doe</h2>
+        <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+    </div>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="?query=my_cats">My cats</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="?query=my_bookings">Cats I rented</a>
+    </li>
+  </ul>
+
+  <% if params[:query] == "my_cats" || params[:query].nil? %>
+    <p>these are my cats PLACEHOLDER</p>
+    <% @cats.each do |cat| %>
+      <%= cl_image_tag cat.photo.key, class: "photo-grid-img card-img-top" %>
+      <h5 class="card-title"><%= cat.name %> </h5>
+    <% end %>
+
+  <% elsif params[:query] == "my_bookings" %>
+    <p>these are my bookings PLACEHOLDER</p>
+
   <% end %>
-
-
-
-
-
-<% elsif params[:query] == "my_bookings" %>
-  <p>these are my bookings PLACEHOLDER</p>
-
-
-
-
-
-
-
-
-
-<% end %>
+</div>

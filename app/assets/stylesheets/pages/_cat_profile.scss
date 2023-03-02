@@ -16,22 +16,23 @@
     max-width: 150px !important;
     border-radius: 50% 50%;
   }
-  .ratings i{
-    color:#cecece;
-    font-size:1em;
-}
-
-  .rating-color{
-      color:#fbc634 !important;
-  }
-
-  .small-ratings i{
-    color:#cecece;
-    margin-bottom:0.5em;
-  }
   .card-body {
     padding-left: 0;
   }
+}
+
+.ratings i{
+  color:#cecece;
+  font-size:1em;
+}
+
+.small-ratings i{
+  color:#cecece;
+  margin-bottom:0.5em;
+}
+
+.rating-color{
+  color:#fbc634 !important;
 }
 
 #aside-right {
@@ -80,4 +81,3 @@
   text-decoration: none;
   }
 }
-

@@ -1,7 +1,7 @@
 class CatsController < ApplicationController
   def index
     @cats = Cat.all
-
+    @bookings = Bookings.all
     @markers = @cats.map do |cat|
       {
         lat: cat.latitude,
@@ -14,6 +14,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    @booking = Booking.new
     @user = @cat.user
 
     @sum_stars_angriness = @cat.angriness_level
@@ -21,7 +22,6 @@ class CatsController < ApplicationController
 
     @sum_stars_fluffiness = @cat.fluffiness
     @sum_no_stars_fluffiness = 5 - @sum_stars_fluffiness
-
   end
 
   def new
@@ -41,6 +41,10 @@ class CatsController < ApplicationController
 
   private
   def cat_params
+    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo)
+  end
+
+  def booking_params
     params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo)
   end
 end

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :cats do
     resources :bookings
   end
+  get "dashboard", to: "pages#dashboard", as: :dashboard
 end

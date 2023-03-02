@@ -116,18 +116,18 @@
 
 
           <div class="card">
-            <img src="" class="card-img-top" alt="...">
-            <%# <%= cl_image_tag @cat.photo.key ? @cat.photo.key : "placeholder.png", class: "photo-grid-img card-img-top"%> %>
+            <%# <img src="" class="card-img-top" alt="..."> %>
+            <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
             <div class="card-body">
               <h5 class="card-title"><%= cat.name %> </h5>
-              <p class="card-text">Cat bio</p>
+              <p class="card-text">
+              <%= cat.description.first(90) %>...</p>
               <a href="#" class="btn btn-primary">Book this cat</a>
             </div>
           </div>
 
           <% end %>
         </div>
-
 
 
     </div>
@@ -139,7 +139,6 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-<%# <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoic2ViaWJhc3RpIiwiYSI6ImNsZHlkN2JleTBicWYzb253dndxeHd4ZmEifQ.1NocQZBKvIQofj_jF7YOZg' style="width:100%">    </div> %>
   </div>
 </div>
 

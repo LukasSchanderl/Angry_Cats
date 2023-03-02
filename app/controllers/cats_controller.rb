@@ -1,8 +1,10 @@
 class CatsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @cats = Cat.all
 
-    @markers = @cats.map do |cat|
+    @markers = @cats.geocoded.map do |cat|
       {
         lat: cat.latitude,
         lng: cat.longitude,
@@ -10,6 +12,7 @@ class CatsController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: {cat: cat}) # Pass the flat to the partial
       }
     end
+
   end
 
   def show
@@ -33,7 +36,6 @@ class CatsController < ApplicationController
     @cat.user = current_user
     if @cat.save
       redirect_to cat_path(@cat)
-      raise
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,6 +43,6 @@ class CatsController < ApplicationController
 
   private
   def cat_params
-    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo)
+    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo, :description)
   end
 end

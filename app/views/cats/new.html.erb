@@ -1,18 +1,18 @@
-<h1>List your angry furball</h1>
-<%= simple_form_for [@cat] do |f| %>
+<h1 class ="my-5 text-center">List your angry furball</h1>
+<div class="card p-5">
+<%= simple_form_for(@cat) do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
-  <%= f.input :angriness_level, :collection => 1..10, :prompt => "Angriness level" %>
-  <%= f.input :fluffiness, :collection => 1..10, :prompt => "Fluffiness level" %>
+  <%= f.input :angriness_level, as: :range, input_html:{ min:"0", max:"5"} %>
+  <%= f.input :fluffiness, as: :range, input_html:{ min:"0", max:"5"} %>
   <%= f.input :color, :collection => ["red", "yellow", "green", "grey", "orange"] %>
-  <%= f.input :price %>
+  <%= f.input :price%>
   <%= f.input :photo, as: :file %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+  <%= f.submit "Submit", class: "btn btn-primary btn-lg btn-block" %>
 <% end %>
+</div>
 
-<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
-<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
-<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
-<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
-<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
-<%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
+<%# <%= link_to "List your fluffy monster",  new_cat_path() %> %>
+
+<%# <%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
+>>>>>>> master

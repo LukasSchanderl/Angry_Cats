@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
-  def home
-  end
+  skip_before_action :authenticate_user!, only: :home
 
-  def search
+  def home
+    @cats = Cat.where(angryness: 3)
   end
 end

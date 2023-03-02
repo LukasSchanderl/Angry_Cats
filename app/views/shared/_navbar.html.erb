@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+  <div class="container container-fluid">
+    <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "logo_angry_cat_3.svg" %>
     <% end %>
 
@@ -26,6 +26,9 @@
             </div>
           </li>
         <% else %>
+        <li class="nav-item">
+            <%= link_to "Rent out a cat", new_cat_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>

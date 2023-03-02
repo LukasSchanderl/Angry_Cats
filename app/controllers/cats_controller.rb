@@ -4,7 +4,7 @@ class CatsController < ApplicationController
   def index
     @cats = Cat.all
 
-    @markers = @cats.map do |cat|
+    @markers = @cats.geocoded.map do |cat|
       {
         lat: cat.latitude,
         lng: cat.longitude,
@@ -12,6 +12,7 @@ class CatsController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: {cat: cat}) # Pass the flat to the partial
       }
     end
+
   end
 
   def show

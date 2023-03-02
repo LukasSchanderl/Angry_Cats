@@ -15,6 +15,13 @@ class CatsController < ApplicationController
   def show
     @cat = Cat.find(params[:id])
     @user = @cat.user
+
+    @sum_stars_angriness = @cat.angriness_level
+    @sum_no_stars_angriness = 5 - @sum_stars_angriness
+
+    @sum_stars_fluffiness = @cat.fluffiness
+    @sum_no_stars_fluffiness = 5 - @sum_stars_fluffiness
+
   end
 
   def new

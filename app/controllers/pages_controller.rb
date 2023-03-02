@@ -7,7 +7,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @cats = Cat.where(user: current_user)
-    
     @user_bookings = current_user.bookings
   end
 end

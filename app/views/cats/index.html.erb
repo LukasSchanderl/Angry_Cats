@@ -10,10 +10,10 @@
   <% end %>
 </div>
 
- <%   if params[:search].present? && !@cats.empty? %>
- <p><%= "You searched for:" %>
-<i><%= (params[:search][:address]) %></i></p>
-<% end %>
+        <% if params[:search].present? && !@cats.empty? %>
+        <p><%= "You searched for:" %>
+        <i><%= (params[:search][:address]) %></i></p>
+        <% end %>
 
 
     <div class="accordion mb-5" id="accordionExample">
@@ -32,31 +32,33 @@
 
                     <h1 class="mx-auto">Filters</h1>
                     <hr>
+
+                    <form data-controller="search-filter">
                       <div class="row align-items-start">
 
                           <div class="col-2">
                             Colour
                               <!-- checkboxes //-->
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault">
+                                <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault" data-search-filter-target="red">
                                 <label class="form-check-label" for="flexCheckDefault">
                                   Red
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" >
+                                <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" data-search-filter-target="black">
                                 <label class="form-check-label" for="flexCheckChecked">
                                   Black
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" >
+                                <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" data-search-filter-target="white">
                                 <label class="form-check-label" for="flexCheckChecked">
                                   White
                                 </label>
                               </div>
                               <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" >
+                                <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" data-search-filter-target="mixed">
                                 <label class="form-check-label" for="flexCheckChecked">
                                   Mixed
                                 </label>
@@ -67,28 +69,40 @@
                       <div class="col-2">
                                 <!-- sliders //-->
                                 <label for="fluffiness" class="form-label">Fluffiness</label>
-                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="fluffiness">
+                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="fluffiness" data-search-filter-target="fluff">
                                 <output>3</output>
                         </div>
 
                       <div class="col-2">
                                 <label for="angriness" class="form-label">Angriness</label>
-                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="angriness">
+                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="angriness" data-search-filter-target="angry">
                                 <output>3</output>
-                    </div>
+                      </div>
 
-                    <div class="col-2">
+                      <div class="col-2">
                                 <label for="price" class="form-label">Price limit</label>
-                                <input class="form-range" type="range" value="20" min="1" max="200" step="1" oninput="this.nextElementSibling.value = this.value" id="price">
+                                <input class="form-range" type="range" value="20" min="1" max="200" step="1" oninput="this.nextElementSibling.value = this.value" id="price" data-search-filter-target="price">
                                 <output>20</output>
                     </div>
 
                       <div class="col-4">
                                 <label for="distance" class="form-label">Distance (in km)</label>
-                                <input class="form-range" type="range" value="20" min="1" max="40" step="1" oninput="this.nextElementSibling.value = this.value" id="distance">
+                                <input class="form-range" type="range" value="20" min="1" max="40" step="1" oninput="this.nextElementSibling.value = this.value" id="distance" data-search-filter-target="distance">
                                 <output>20</output>
+                                <br>
+
+
+                        <form id="theForm">
+                          <input type="hidden" name="filters" value="">
+                          <button type="submit" class="btn btn-primary"
+                          data-action="click->search-filter#apply">Apply filter</button>
+                        </form>
                     </div>
+
                   </div>
+
+
+                  </form>
                 </div>
               <!-- accordion content end //-->
 
@@ -127,7 +141,7 @@
                   <h5 class="card-title"><%= cat.name %> </h5>
                     <p class="card-text">
                   <%= cat.description.first(90) %>...</p>
-                  <a href="/cats/<%= cat.id %>" class="btn btn-primary">Book this cat</a>
+                  <a href="/cats/<%= cat.id %>" class="btn btn-primary">Details</a>
                 </div>
               </div>
             <% end %>

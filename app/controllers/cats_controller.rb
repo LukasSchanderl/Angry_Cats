@@ -1,6 +1,6 @@
 class CatsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  
+
   def index
     @cats = Cat.all
 
@@ -35,6 +35,6 @@ class CatsController < ApplicationController
 
   private
   def cat_params
-    params.require(:cat).permit(:name, :pickup_address, :angriness_level, :fluffiness, :color, :price, :photo, :description)
+    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo, :description)
   end
 end

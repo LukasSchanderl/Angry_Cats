@@ -2,6 +2,7 @@
 <div class="card p-5">
 <%= simple_form_for(@cat) do |f| %>
   <%= f.input :name %>
+  <%= f.input :description %>
   <%= f.input :address %>
   <%= f.input :angriness_level, as: :range, input_html:{ min:"0", max:"5"} %>
   <%= f.input :fluffiness, as: :range, input_html:{ min:"0", max:"5"} %>

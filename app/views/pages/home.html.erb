@@ -28,35 +28,19 @@
 
     <div class="row text-center mt-5">
       <h4>Top 3 angriest cats</h5>
-      <div class="col-lg-12 d-flex justify-content-around gx-3 mt-3">
-          <div class="col-sm-3">
-            <div class="card my-8">
-                <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
+        <div class="col-lg-12 d-flex justify-content-around gx-3 mt-3">
+          <% @cats.first(3).each do |cat| %>
+            <div class="col-sm-3">
+              <div class="card my-5">
+                <%= cl_image_tag cat.photo.key, class: "photo-grid-img card-img-top" %>
                 <div class="card-body">
-                  <h6 class="card-title text-center">Voldemort</h6>
-                  <%= link_to "Book me", cat_path(Cat.first), class: 'btn btn-primary' %>
+                  <h5 class="card-title"><%= cat.name %> </h5>
+                  <%= link_to "Book me", cat_path(cat), class: 'btn btn-primary' %>
                 </div>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="card my-8">
-                <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
-                <div class="card-body">
-                  <h6 class="card-title text-center">Saruman</h6>
-                  <%= link_to "Book me", cat_path(Cat.second), class: 'btn btn-primary' %>
-                </div>
-            </div>
-          </div>
-
-          <div class="col-sm-3">
-            <div class="card my-8">
-                <img src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg">
-                <div class="card-body">
-                  <h6 class="card-title text-center">Mephisto</h6>
-                  <%= link_to "Book me", cat_path(Cat.third), class: 'btn btn-primary' %>
-                </div>
-            </div>
-          </div>
+          <% end %>
+        </div>
       </div>
   </div>
 

@@ -1,0 +1,31 @@
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="?query=my_cats">My cats</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="?query=my_bookings">Cats I rented</a>
+  </li>
+</ul>
+
+<% if params[:query] == "my_cats" || params[:query].nil? %>
+  <p>these are my cats PLACEHOLDER</p>
+  <%= @user_cats.each do |cat| %>
+    
+  <% end %>
+
+
+
+
+
+<% elsif params[:query] == "my_bookings" %>
+  <p>these are my bookings PLACEHOLDER</p>
+
+
+
+
+
+
+
+
+
+<% end %>

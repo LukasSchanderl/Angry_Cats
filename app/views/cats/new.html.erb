@@ -3,6 +3,8 @@
 <%= simple_form_for(@cat) do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
+  <%= f.input :description %>
+  <%= f.input :address %>
   <%= f.input :angriness_level, as: :range, input_html:{ min:"0", max:"5"} %>
   <%= f.input :fluffiness, as: :range, input_html:{ min:"0", max:"5"} %>
   <%= f.input :color, :collection => ["red", "yellow", "green", "grey", "orange"] %>
@@ -12,7 +14,6 @@
 <% end %>
 </div>
 
-<%# <%= link_to "List your fluffy monster",  new_cat_path() %> %>
+<%# <%= link_to "List your fluffy monster",  new_cat_path() %>
 
 <%# <%= cl_image_tag Cat.last.photo.key ? Cat.last.photo.key : "placeholder.png", height: 300, width: 400, crop: :fill  %>
->>>>>>> master

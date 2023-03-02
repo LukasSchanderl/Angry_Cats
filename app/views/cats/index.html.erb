@@ -1,19 +1,19 @@
 <div class="search-container">
 
   <h1 class="mx-auto">Find your perfect angry cat!</h1>
-  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <%= simple_form_for :search, url: cats_path, method: :get do |f| %>
     <%= f.input :address,
       input_html: {data: {address_autocomplete_target: "address"}},
       wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
     %>
-
+    <%= f.submit value: 'Search for a cat!', class: "btn-primary" %>
   <% end %>
 </div>
 
-
-
-
-
+ <%   if params[:search].present? && !@cats.empty? %>
+ <p><%= "You searched for:" %>
+<i><%= (params[:search][:address]) %></i></p>
+<% end %>
 
 
     <div class="accordion mb-5" id="accordionExample">
@@ -95,8 +95,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
 
 
@@ -109,46 +107,41 @@
   <div class="row align-items-start">
   <!-- search result column below //-->
     <div class="col-8">
-      <h1>Top 10 angriest cats</h1>
+      <h1>Top angriest cats</h1>
           <hr>
           <div class="cards">
-          <% @cats.each do |cat| %>
-
-
-          <div class="card">
-            <%= cl_image_tag cat.photo.key, class: "photo-grid-img card-img-top" %>
-            <div class="card-body">
-              <h5 class="card-title"><%= cat.name %> </h5>
-              <p class="card-text">Cat bio</p>
-              <a href="#" class="btn btn-primary">Book this cat</a>
-            </div>
-          </div>
-
-          <% end %>
+           <% if @cats.empty? %>
+              <div>
+                <%= "You searched for:" %>
+                <i><%= (params[:search][:address]) %></i></div>
+                <br>
+                <div class="mt-3"><%= "No angry cats in this area (yet!)." %><br>
+                <%= "Wait for some to barge in or try another area 🐈" %>
+              </div>
+            <% else %>
+              <% @cats.each do |cat| %>
+                <div class="card">
+                <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
+                  <div class="card-body">
+                  <h5 class="card-title"><%= cat.name %> </h5>
+                    <p class="card-text">
+                  <%= cat.description.first(90) %>...</p>
+                  <a href="/cats/<%= cat.id %>" class="btn btn-primary">Book this cat</a>
+                </div>
+              </div>
+            <% end %>
+             <% end %>
         </div>
-
-
-
     </div>
+
     <!-- map column below //-->
 <div class="col-4">
-<h1>Find them on the map</h1>
-  <hr>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-<%# <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1Ijoic2ViaWJhc3RpIiwiYSI6ImNsZHlkN2JleTBicWYzb253dndxeHd4ZmEifQ.1NocQZBKvIQofj_jF7YOZg' style="width:100%">    </div> %>
-  </div>
+  <h1>Find them on the map</h1>
+    <hr>
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+        </div>
+      </div>
 </div>
-
-
-
-
-
-
-
-</div>
-
-
-<%# <iframe width='100%' height='400px' src="https://api.mapbox.com/styles/v1/melewagon/clepnuh9800at01o9fgcg958a.html?title=false&access_token=pk.eyJ1IjoibWVsZXdhZ29uIiwiYSI6ImNsZTc1cXpkcTAyOHUzbm56M3JoOGFsODUifQ.mQmlXYB-Mcl0EnM8ZzQSsQ&zoomwheel=false#2/20/0" title="Mapbox Basic Overcast" style="border:none;"></iframe> %>

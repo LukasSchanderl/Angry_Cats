@@ -9,12 +9,6 @@ h1{
   font-size:24pt!important;
 }
 
-@font-face {
-  font-family: 'Rocher';
-  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
-
-}
-
-#slogan {
-font-family: 'Rocher'!important;
+.btn-primary {
+  color: #fff !important;
 }

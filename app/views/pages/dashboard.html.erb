@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+  </div>
+
+    <div class="card-product my-3 p-2">
+      <img src="https://get.pxhere.com/photo/man-person-people-hair-white-male-guy-portrait-model-young-human-fashion-lifestyle-smile-caucasian-face-cool-glasses-expression-sexy-style-body-handsome-good-looking-attractive-emotion-adult-success-confident-portrait-photography-facial-hair-vision-care-1387382.jpg" />
+      <div class="card-product-infos">
+        <h2>Jane Doe</h2>
+        <p id='text-size'>I am a cat lover who embraces their dark side, too.</p>
+      </div>
+    </div>
+
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="?query=my_cats">My cats</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="?query=my_bookings">Current rentals</a>
+    </li>
+  </ul>
+
+
+  <div class="row">
+    <div class="d-flex">
+      <%= link_to new_cat_path, class: "dashboard-card add-card" do %>
+        <!--<div class="justify-content-center align-items-center"> style="background-color: #FFD580; height: 265px"-->
+          <div>
+            <i class="fa-solid fa-plus" style="font-size: 5em"></i>
+          </div>
+      <% end %>
+
+      <% if params[:query] == "my_cats" || params[:query].nil? %>
+        <% @cats.each do |cat| %>
+          <%= link_to cat_path(cat), class: "dashboard-card" do %>
+            <div>
+              <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
+              <div class="card-body">
+                <h5 class="card-title"><%= cat.name %> </h5>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
+
+  <% elsif params[:query] == "my_bookings" %>
+    <p>these are my bookings PLACEHOLDER</p>
+
+  <% end %>
+</div>

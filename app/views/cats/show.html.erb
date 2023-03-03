@@ -11,62 +11,81 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6" style="padding:0">
-        <img class="photo-grid-img" src="https://cdn.shopify.com/s/files/1/0668/5887/7235/articles/Cat-upside-down-playing.jpg?v=1673878181" alt="">
+        <%# <img class="photo-grid-img" src="https://cdn.shopify.com/s/files/1/0668/5887/7235/articles/Cat-upside-down-playing.jpg?v=1673878181" alt=""> %>
         <%#= cl_image_tag "https://source.unsplash.com/random/?mountains", style: "object-fit:cover; width:100%;aspect-ratio: 1/1" %>
+        <%= cl_image_tag @cat.photo.key ? @cat.photo.key : "placeholder.png", class: "photo-grid-img" %>
       </div>
       <div class="col-lg-6">
         <div class="row">
           <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://as2.ftcdn.net/v2/jpg/01/43/08/63/1000_F_143086380_rItZFPnSAhLVrOly1VcNtb5qjjBRxhLf.jpg" alt=""></div>
           <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://img.myloview.de/fototapeten/portrait-of-angry-fluffy-cats-angry-cat-looking-700-200514460.jpg" alt=""></div>
+
         </div>
-        <div class="row">
-          <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg" alt=""></div>
-          <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://media-be.chewy.com/wp-content/uploads/Cat_Hates_Visitors_June_JV_MZ.jpg" alt=""></div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://as2.ftcdn.net/v2/jpg/01/43/08/63/1000_F_143086380_rItZFPnSAhLVrOly1VcNtb5qjjBRxhLf.jpg" alt=""></div>
+            <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://img.myloview.de/fototapeten/portrait-of-angry-fluffy-cats-angry-cat-looking-700-200514460.jpg" alt=""></div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg" alt=""></div>
+            <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://media-be.chewy.com/wp-content/uploads/Cat_Hates_Visitors_June_JV_MZ.jpg" alt=""></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<section>
-  <div class="container p-0">
-    <!--left aside-->
-    <div class="row">
-          <div class="col-lg-3 mt-4" id="aside-left">
-            <!-- Bio-->
-            <h2><%= @cat.name.titleize %></h2>
+  </section>
+  <section>
+    <div class="container p-0">
+      <!--left aside-->
+      <div class="row">
+            <div class="col-lg-3 mt-4" id="aside-left">
+              <!-- Bio-->
+              <h2><%= @cat.name.titleize %></h2>
 
-            <div class="mt-3 d-flex justify-content-between align-items-center">
-                <h6 class="review-stat">Color: <%= @cat.color %></h6>
-            </div>
-
+              <div class="mt-3 d-flex justify-content-between align-items-center">
+                  <h6 class="review-stat">Color: <%= @cat.color.titleize %></h6>
+              </div>
             <div class="mt-3">
               <h5 class="review-stat my-2">Bio</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ipsam harum ratione tempora magnam!</p>
+              <p>@cat.bio%</p>
             </div>
             <!-- END Bio-->
 
-            <h5 class="review-stat my-2">Ratings</h5>
 
-            <!-- Rating Cards-->
-            <div class="ratings mt-3 d-flex justify-content-between align-items-center">
-                <h6 class="review-stat">Angriness Level</h6>
-                <div class="small-ratings">
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                </div>
-            </div>
+              <h5 class="review-stat my-2">Ratings</h5>
 
-            <div class="ratings mt-3 d-flex justify-content-between align-items-center">
-                <h6 class="review-stat">Fluffiness Level</h6>
-                <div class="small-ratings">
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star rating-color"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
-                    <i class="fa fa-star"></i>
+              <!-- Rating Cards-->
+              <div class="ratings mt-3 d-flex justify-content-between align-items-center">
+                  <h6 class="review-stat">Angriness Level</h6>
+                  <div class="small-ratings">
+
+                      <% @sum_stars_angriness.times do %>
+                        <i class="fa fa-star rating-color"></i>
+                      <% end %>
+
+                      <% if @sum_no_stars_angriness > 0 %>
+                        <% @sum_no_stars_angriness.times do  %>
+                          <i class="fa fa-star"></i>
+                        <% end %>
+                      <% end %>
+
+                  </div>
+              </div>
+
+              <div class="ratings mt-3 d-flex justify-content-between align-items-center">
+                  <h6 class="review-stat">Fluffiness Level</h6>
+                  <div class="small-ratings">
+
+                      <% @sum_stars_fluffiness.times do %>
+                        <i class="fa fa-star rating-color"></i>
+                      <% end %>
+
+                      <% if @sum_no_stars_fluffiness > 0 %>
+                        <% @sum_no_stars_fluffiness.times do  %>
+                          <i class="fa fa-star"></i>
+                        <% end %>
+                      <% end %>
+
                 </div>
             </div><!-- END - Rating Cards-->
             <h5 class="review-stat my-2">Owner</h5>
@@ -78,7 +97,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h6 class="card-title">Max Muster</h6>
+                            <h6 class="card-title"><%= @user.email %></h6>
                             <a class="btn btn-primary text-decoration-none" href="#">View Profile</a>
                         </div>
                     </div>
@@ -87,17 +106,30 @@
          </div><!-- END - Left aside-->
          <!--main-->
         <div class="col-lg-6 mt-4" id="main">
-            <h3>Review</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ipsam harum ratione tempora magnam! Voluptate enim cumque aliquid. Corrupti, labore.</p>
-            <h3>Lorem ipsum dolor </h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore ipsam harum ratione tempora magnam! Voluptate enim cumque aliquid. Corrupti, labore.</p>
+            <h3>Description</h3>
+            <p>@cat.description</p>
         </div>
 
         <div class="col-lg-3 mt-4" id="aside-right">
-          <a class="btn btn-primary btn-large text-decoration-none w-100 mb-3" href="#">Book</a>
-          <%= image_tag "calender_avatar.jpg" %>
-          <img src="" alt="">
-        </div>
-     </div><!-- END - row -->
-  </div>
-</section>
+          <div class="row">
+            <div class="my-3 py-3 card ">
+              <%= simple_form_for [@cat, @booking],:url => new_cat_booking_path(@cat, @booking),:method => :get, data: { controller: 'flatpickr' } do |f| %>
+                  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" }, class: "" }, placeholder: 'Pick-Up Date', label: false, wrapper_html: { class: "col-md-12" } %>
+                  <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, class: "" }, placeholder: 'Drop-Of Date', label: false, wrapper_html: { class: "col-md-12" } %>
+                  <%= f.submit "Book", class: "btn btn-primary btn-large text-decoration-none w-100" %>
+                <% end %>
+
+            </div>
+            <%= image_tag "map_avatar.png" %>
+
+          <!--map
+          <div style="width: 100%; max-height: 600px;"
+                data-controller="map"
+                data-map-markers-value="<%= @markers.to_json %>"
+                data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+          </div>
+          -->
+      </div><!-- END - row -->
+    </div>
+  </section>
+</div>

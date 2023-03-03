@@ -116,7 +116,7 @@ Now the kitty was free again. People no longer know when the kitty comes and goe
         <div class="col-lg-3 mt-4" id="aside-right">
           <div class="row">
             <div class="my-3 py-3 card ">
-              <%= simple_form_for [@cat, @booking], data: { controller: 'flatpickr' } do |f| %>
+              <%= simple_form_for [@cat, @booking],:url => new_cat_booking_path(@cat, @booking),:method => :get, data: { controller: 'flatpickr' } do |f| %>
                   <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: "startTime" }, class: "" }, placeholder: 'Pick-Up Date', label: false, wrapper_html: { class: "col-md-6" } %>
                   <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: "endTime" }, class: "" }, placeholder: 'Drop-Of Date', label: false, wrapper_html: { class: "col-md-6" } %>
                   <%= f.submit "Book", class: "btn btn-primary btn-large text-decoration-none w-100" %>

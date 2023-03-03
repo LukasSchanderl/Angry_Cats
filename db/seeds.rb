@@ -23,7 +23,7 @@ berlin_address = [
   "Rosenthaler Str. 31"
 ]
 
-cat_stroies = [
+cat_stories = [
   "Catsy is a very cute cat. Everyone likes her very much. She used to roam from place to place and loved everyone by saying meow. Catsy loved drinking milk. She makes many things from milk like – ice cream, cheese, and cream. Water comes into her mouth when she saw milk.
   Every day Milky Cow used to come and give milk to Catsy. But one day the Milky cow suddenly did not come and Catsy did not get her milk. In such a situation she was very sad but then she thought why not go to Milky Cow’s house and bring milk.
   Now Catsy tied a handkerchief around her neck, put a cap on her head, and came out with a car key in her hand. Catsy also had a cute little bottle in her hand which had a picture of a cat on it and it was written on it, ‘Catsy The Cat Meow Meow’.
@@ -119,7 +119,7 @@ i = 0
     color: color.sample,
     price: Faker::Number.decimal(l_digits: 2),
     bio: Faker::Quote.matz,
-    description: cat_stroies.sample
+    description: cat_stories.sample
   )
   cat.photo.attach(io: URI.open("https://cataas.com/cat"), filename: "test")
   cat.user = User.all[i]

@@ -16,6 +16,7 @@ export default class extends Controller {
     "black",
     "white",
     "mixed",
+    "filtered"
   ];
 
   connect() {
@@ -63,15 +64,30 @@ export default class extends Controller {
 
         if (cat.angriness_level >= this.angryTarget.value){
           kitties.push(cat)
-          // console.log(kitties)
+          //  this.filteredTarget.innerHTML = ""
+            // document.getElementById("filtered").innerHTML = '<div class="card" data-filter-target="cat"><%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %><div class="card-body"><h5 class="card-title"><%= cat.name %> </h5><p class="card-text"><%= cat.description.first(90) %>...</p><a href="/cats/<%= cat.id %>" class="btn btn-primary">Details</a></div></div><% end %><% end %>'
+
+            document.getElementById("filtered").innerHTML = ""
+            // forEach((cat) => {
+            //   document.getElementById("filtered").innerHTML = "cats here"
+
+
+            // })
+
+
+          }}})
+
+           console.log(kitties)
+
+
 
         }
 
 
       }
-    }
-    )
+//     }
+//     )
 
-    // this.resultTarget.value = JSON.stringify(inputs)
-  }
-}
+//     // this.resultTarget.value = JSON.stringify(inputs)
+//   }
+// }

@@ -132,10 +132,11 @@
   <div class="container">
     <div class="row align-items-start">
     <!-- search result column below //-->
-      <div class="col-8" data-filter-target="display">
+      <div class="col-8"  data-filter-target="filtered" id="filtered">
         <h1>Top angriest cats</h1>
             <hr>
             <div class="cards">
+            <div >
             <% if @cats.empty? %>
                 <div>
                   <%= "You searched for:" %>
@@ -147,6 +148,8 @@
                   <%= "Wait for some to barge in or try another area 🐈" %>
                 </div>
               <% else %>
+              <!-- target div to wipe //-->
+
                 <% @cats.each do |cat| %>
                   <div class="card" data-filter-target="cat">
                   <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
@@ -161,6 +164,8 @@
               <% end %>
           </div>
       </div>
+          <!-- target div to wipe  ends below//-->
+          </div>
 
       <!-- map column below //-->
   <div class="col-4">

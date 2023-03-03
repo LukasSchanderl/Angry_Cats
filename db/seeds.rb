@@ -80,6 +80,14 @@ On the other hand, the cat climbed into the tree and saved his life. But he regr
 
 ]
 
+color =
+[
+  "black",
+  "white",
+  "red",
+  "mixed"
+]
+
 require "open-uri"
 require "faker"
 
@@ -108,10 +116,10 @@ i = 0
     name: Faker::Creature::Cat.name,
     angriness_level: Faker::Number.within(range: 1..5),
     fluffiness: Faker::Number.within(range: 1..5),
-    color: Faker::Color.color_name,
+    color: color.sample,
     price: Faker::Number.decimal(l_digits: 2),
     bio: Faker::Quote.matz,
-    description: Faker::Quote.matz
+    description: cat_stroies.sample
   )
   cat.photo.attach(io: URI.open("https://cataas.com/cat"), filename: "test")
   cat.user = User.all[i]

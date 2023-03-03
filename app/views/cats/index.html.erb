@@ -1,70 +1,31 @@
-<div class="container">
-  <div class="search-container">
+<div class="search-container">
 
-    <h1 class="mx-auto">Find your perfect angry cat!</h1>
-    <%= simple_form_for :search, url: cats_path, method: :get do |f| %>
-      <%= f.input :address,
-        input_html: {data: {address_autocomplete_target: "address"}},
-        wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-      %>
-      <%= f.submit value: 'Search for a cat!', class: "btn-primary" %>
-    <% end %>
-  </div>
+  <h1 class="mx-auto">Find your perfect angry cat!</h1>
+  <%= simple_form_for :search, url: cats_path, method: :get do |f| %>
+  <br>
+    <%= f.input :address, label: 'Type the address:',
+      input_html: {data: {address_autocomplete_target: "address"}},
+      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+    %>
+    <%= f.submit value: 'Search for a cat!', class: "btn-primary" %>
+  <% end %>
+</div>
 
-          <% if params[:search].present? && !@cats.empty? %>
-          <p><%= "You searched for:" %>
-          <i><%= (params[:search][:address]) %></i></p>
-          <% end %>
-
-
-      <div class="accordion mb-5" id="accordionExample">
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Search filters
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-            <div class="accordion-body filters">
+        <% if params[:search].present? && !@cats.empty? %>
+        <p><%= "You searched for:" %>
+        <i><%= (params[:search][:address]) %></i></p>
+        <% end %>
 
 
-                <!-- accordion content below //-->
-                <div>
-
-                      <h1 class="mx-auto">Filters</h1>
-                      <hr>
-
-                      <form data-controller="search-filter">
-                        <div class="row align-items-start">
-
-                            <div class="col-2">
-                              Colour
-                                <!-- checkboxes //-->
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault" data-search-filter-target="red">
-                                  <label class="form-check-label" for="flexCheckDefault">
-                                    Red
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" data-search-filter-target="black">
-                                  <label class="form-check-label" for="flexCheckChecked">
-                                    Black
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" data-search-filter-target="white">
-                                  <label class="form-check-label" for="flexCheckChecked">
-                                    White
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" data-search-filter-target="mixed">
-                                  <label class="form-check-label" for="flexCheckChecked">
-                                    Mixed
-                                  </label>
-                            </div>
-                        </div>
+    <div class="accordion mb-5" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Search filters
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body filters">
 
 
                         <div class="col-2">

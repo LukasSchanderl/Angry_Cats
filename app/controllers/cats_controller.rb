@@ -2,14 +2,19 @@ class CatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
+
+
+
+
     if params[:search].present?
     #   binding.pry
       @cats = Cat.all
       @cats = Cat.search_by_address(params[:search][:address])
     #   binding.pry
           if params[:filters].present?
+            console.log(params[:filters])
             # binding.pry
-            filters = JSON.parse(params[:filters])
+            # filters = JSON.parse(params[:filters])
             filters = JSON.parse params[:filters].gsub('=>', ':')
             # filters.each do |key, value|
             #     new_hash = {}
@@ -57,6 +62,8 @@ class CatsController < ApplicationController
         marker_html: render_to_string(partial: "marker", locals: {cat: cat}) # Pass the flat to the partial
       }
     end
+
+
 
   end
 

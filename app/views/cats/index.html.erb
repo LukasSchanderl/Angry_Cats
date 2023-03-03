@@ -7,7 +7,7 @@
       input_html: {data: {address_autocomplete_target: "address"}},
       wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
     %>
-    <%= f.submit value: 'Search for a cat!', class: "btn-primary" %>
+    <%= f.submit value: 'Search for a cat!', class: "btn-primary search-button" %>
   <% end %>
 </div>
 
@@ -142,12 +142,58 @@
             <% else %>
               <% @cats.each do |cat| %>
                 <div class="card">
-                <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
-                  <div class="card-body">
-                  <h5 class="card-title"><%= cat.name %> </h5>
+                <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top cat-card" %>
+                  <div class="card-body cat-card-body">
+                   <h5 class="card-title"><strong><%= cat.name %> </strong></h5>
                     <p class="card-text">
-                  <%= cat.description.first(90) %>...</p>
-                  <a href="/cats/<%= cat.id %>" class="btn btn-primary">Details</a>
+                     <h6 class="review-stat">
+                        <%= cat.color %>
+                        <% if cat.color == "black" %>
+                          <i class="fa-solid fa-paw"></i>
+                          <% elsif cat.color == "mixed" %>
+                          <i class="fa-solid fa-paw mixed"></i>
+                          <% elsif cat.color == "red" %>
+                          <i class="fa-solid fa-paw orange"></i>
+                          <% elsif cat.color == "white" %>
+                          <i class="fa-regular fa-paw"></i>
+                        <% end %>
+                     </h6>
+
+                     <%= cat.description.first(90) %>...</p>
+
+                      <div class="ratings mt-3 d-flex justify-content-between align-items-center">
+                        <h6 class="review-stat">Angriness</h6>
+                        <div class="small-ratings">
+                          <% a = cat.angriness_level.to_i %>
+                          <% a.times do %>
+                          <i class="fa fa-star rating-color"></i>
+                          <% end %>
+                          <% if a > 0 %>
+                          <% (5-a).times do  %>
+                          <i class="fa fa-star"></i>
+                          <% end %>
+                          <% end %>
+                        </div>
+                     </div>
+
+                     <div class="ratings mt-3 d-flex justify-content-between align-items-center">
+                        <h6 class="review-stat">Fluffiness</h6>
+                        <div class="small-ratings">
+                          <% f = cat.fluffiness.to_i %>
+                          <% (5-f).times do %>
+                          <i class="fa fa-star rating-color"></i>
+                          <% end %>
+                          <% if f > 0 %>
+                          <% f.times do  %>
+                          <i class="fa fa-star"></i>
+                          <% end %>
+                          <% end %>
+                        </div>
+                     </div>
+<br>
+
+                  <a href="/cats/<%= cat.id %>" class="btn btn-primary mb-2">Details</a>
+
                 </div>
               </div>
             <% end %>

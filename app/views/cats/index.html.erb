@@ -122,22 +122,31 @@
   <br>
     <!-- container for search result and map below //-->
 
-  <div class="container">
-    <div class="row align-items-start">
-    <!-- search result column below //-->
-      <div class="col-8">
-        <h1>Top angriest cats</h1>
-            <hr>
-            <div class="cards">
-            <% if @cats.empty? %>
-                <div>
-                  <%= "You searched for:" %>
-                  <i><%=
-                  # (params[:search][:address])
-                  %></i></div>
-                  <br>
-                  <div class="mt-3"><%= "No angry cats in this area (yet!)." %><br>
-                  <%= "Wait for some to barge in or try another area 🐈" %>
+<div class="container">
+  <div class="row align-items-start">
+  <!-- search result column below //-->
+    <div class="col-8">
+      <h1>Top angriest cats</h1>
+          <hr>
+          <div class="cards">
+           <% if @cats.empty? %>
+              <div>
+                <%= "You searched for:" %>
+                <i><%= (params[:search][:address]) %></i></div>
+                <br>
+                <div class="mt-3"><%= "No angry cats in this area (yet!)." %><br>
+                <%= "Wait for some to barge in or try another area 🐈" %>
+              </div>
+            <% else %>
+              <% @cats.each do |cat| %>
+                <div class="card">
+                <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top img-fluid" %>
+                  <div class="card-body">
+                  <h5 class="card-title"><%= cat.name %> </h5>
+                    <p class="card-text">
+                  <%= cat.description.first(90) %>...</p>
+                  <a href="/cats/<%= cat.id %>" class="btn btn-primary">Book this cat</a>
+
                 </div>
               <% else %>
                 <% @cats.each do |cat| %>

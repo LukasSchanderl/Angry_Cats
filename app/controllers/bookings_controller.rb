@@ -11,8 +11,16 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @cat = Cat.find(params[:cat])
+    @cat = Cat.find(params[:cat_id])
     @booking = Booking.new
+    @start_date = params[:booking]["start_date"]
+    @end_date = params[:booking]["end_date"]
+
+    @sum_stars_angriness = @cat.angriness_level
+    @sum_no_stars_angriness = 5 - @sum_stars_angriness
+
+    @sum_stars_fluffiness = @cat.fluffiness
+    @sum_no_stars_fluffiness = 5 - @sum_stars_fluffiness
   end
 
   def create
@@ -22,7 +30,7 @@ class BookingsController < ApplicationController
     @booking.cat = @cat
 
     if @booking.save!
-      redirect_to cat_booking_path(@cat, @booking)
+      redirect_to dashboard_path(@cat, @booking)
     else
       render :new
     end

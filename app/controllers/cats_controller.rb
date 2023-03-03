@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :all]
 
   def index
     if params[:search].present?
@@ -32,6 +32,7 @@ class CatsController < ApplicationController
 
             @cats = @cats.where(fluffiness: search_fluffiness)
             @cats = @cats.where(angriness_level: search_angriness_level)
+            raise
             @cats.foreach do |cat|
               if cat[:distance] <= search_distance
                 distace_cats = []
@@ -81,6 +82,11 @@ class CatsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def all
+    @cats = Cat.all
+    return @cats
   end
 
   private

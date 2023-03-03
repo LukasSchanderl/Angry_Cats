@@ -1,52 +1,206 @@
-<div class="row">
-  <div class="col-md-8">
-    <div class="card bg-none">
+<div class="row justify-content-between pt-5">
+  <div class="col-md-5 order-md-2">
 
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
 
-      <div class="card-body">
-          <h6 class="card-title"><%= @booking.cat.name %></h6>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit doloremque tempora odio similique accusantium velit eum numquam illum alias unde?</p>
+            <div class="row justify-content-between align-items-center">
+              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0"><!--image-->
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <%= cl_image_tag @cat.photo.key ? @cat.photo.key : "placeholder.png", class: "w-100" %>
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="col-lg-9 col-xl-9"><!--rating-body-->
+                <h5><%= @booking.cat.name %></h5>
+                <div class="flex-row">
 
-          <div class="ratings mt-3 d-flex justify-content-between align-items-center">
-            <h6 class="review-stat">Angriness Level</h6>
-            <div class="small-ratings">
-                    <% @sum_stars_fluffiness.times do %>
-                      <i class="fa fa-star rating-color"></i>
-                    <% end %>
+                  <div class="ratings d-flex justify-content-between align-items-center">
+                    <h6 class="review-stat">Angriness Level</h6>
+                    <div class="small-ratings">
+                            <% @sum_stars_fluffiness.times do %>
+                              <i class="fa fa-star rating-color"></i>
+                            <% end %>
 
-                    <% if @sum_no_stars_fluffiness > 0 %>
-                      <% @sum_no_stars_fluffiness.times do  %>
-                        <i class="fa fa-star"></i>
-                      <% end %>
-                    <% end %>
+                            <% if @sum_no_stars_fluffiness > 0 %>
+                              <% @sum_no_stars_fluffiness.times do  %>
+                                <i class="fa fa-star"></i>
+                              <% end %>
+                            <% end %>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="flex-row">
+                  <div class="ratings d-flex justify-content-between align-items-center">
+                    <h6 class="review-stat">Fluffiness</h6>
+                    <div class="small-ratings">
+                            <% @sum_stars_fluffiness.times do %>
+                              <i class="fa fa-star rating-color"></i>
+                            <% end %>
+
+                            <% if @sum_no_stars_fluffiness > 0 %>
+                              <% @sum_no_stars_fluffiness.times do  %>
+                                <i class="fa fa-star"></i>
+                              <% end %>
+                            <% end %>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
             </div>
-          </div>
-
-          <div class="ratings mt-3 d-flex justify-content-between align-items-center">
-            <h6 class="review-stat">Fluffiness</h6>
-            <div class="small-ratings">
-                    <% @sum_stars_fluffiness.times do %>
-                      <i class="fa fa-star rating-color"></i>
-                    <% end %>
-
-                    <% if @sum_no_stars_fluffiness > 0 %>
-                      <% @sum_no_stars_fluffiness.times do  %>
-                        <i class="fa fa-star"></i>
-                      <% end %>
-                    <% end %>
+          </div><!--END card body-->
+          <div class="card-footer pt-3">
+            <h4>Price Details</h4>
+            <div class="flex-row">
+              <div class="d-flex justify-content-between align-items-center">
+                <p>Preis x Tage</p>
+                <p class="mb-1 me-1"><%= @cat.price %> €</p>
+              </div>
             </div>
-          </div>
+            <div class="flex-row">
+              <div class="d-flex justify-content-between align-items-center">
+                <h6>Total</h6>
+                <h6 class="mb-1 me-1"><%= @cat.price %> €</h6>
+              </div>
+            </div>
 
-          <h5>Details Of Your Booking</h5>
+          </div><!--END card footer-->
+       </div><!--END card -->
 
+  </div><!-- END col-md-5-->
 
+  <div class="col-md-6 order-md-1 p-4 pt-md-0">
 
-
+    <div class="mt-4 mt-md-0">
+      <h4 class="mb-4 mt-md-2">Details Of Your Booking</h4>
+      <h5>Pickup at</h5>
+      <div class="d-flex justify-content-between align-items-center">
+        <p><%= @booking.cat.address %></p>
+      </div>
+      <h5>Dates</h5>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="m-0"><%=  @booking.start_date%> - <%= @booking.end_date %></p>
+        <%= link_to "Edit Date", request.referer %>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-4">
 
-  </div>
+    <div class="mt-4">
+      <h4 class="mb-4">Paymethod</h4>
+
+
+
+              <div class="col-12">
+                    <div class="card-body border border-dark p-0"><!--Card-body-PayPal-->
+                        <p>
+                            <a class="btn btn-primary-outline w-100 h-100 d-flex align-items-center justify-content-between"
+                                data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                                aria-controls="collapseExample">
+                                <span class="fw-bold">PayPal</span>
+                                <span class="fab fa-cc-paypal">
+                                </span>
+                            </a>
+                        </p>
+                        <div class="collapse p-3 pt-0" id="collapseExample">
+                            <div class="row">
+                                <div class="col-8">
+                                    <p class="h4 mb-0">Summary</p>
+                                    <p class="mb-0"><span class="fw-bold">Cat:</span><span class="text-primary"> <%= @cat.name %></span></p>
+                                    <p class="mb-0"><span class="fw-bold">Total Price:</span><span
+                                            class="text-primary"> <%= @cat.price %></span></p>
+                                    <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                                        nihil neque
+                                        quisquam aut
+                                        repellendus!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body border border-secondary p-0"><!--Credit-Card-->
+                        <p>
+                            <a class="btn btn-primary p-2 w-100 h-100 d-flex align-items-center justify-content-between"
+                                data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true"
+                                aria-controls="collapseExample">
+                                <span class="fw-bold">Credit Card</span>
+                                <span class="">
+                                    <span class="fab fa-cc-amex text-white"></span>
+                                    <span class="fab fa-cc-mastercard text-white"></span>
+                                    <span class="fab fa-cc-discover text-white"></span>
+                                </span>
+                            </a>
+                        </p>
+                        <div class="collapse show p-3 pt-0" id="collapseExample">
+                            <div class="row">
+                                <div class="col-lg-5 mb-lg-0 mb-3">
+                                    <p class="h4 mb-0">Summary</p>
+                                    <p class="mb-0"><span class="fw-bold">Cat:</span><span class="text-primary"> <%= @cat.name %></span>
+                                    </p>
+                                    <p class="mb-0">
+                                        <span class="fw-bold">Price:</span>
+                                        <span class="text-primary"> <%= @cat.price %></span>
+                                    </p>
+                                    <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque
+                                        nihil neque
+                                        quisquam aut
+                                        repellendus!</p>
+                                </div>
+                                <div class="col-lg-7">
+
+                                    <form action="" class="form">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">Card Number</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">MM / yy</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <div class="form__div">
+                                                    <input type="password" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">cvv code</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form__div">
+                                                    <input type="text" class="form-control" placeholder=" ">
+                                                    <label for="" class="form__label">name on the card</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <%= link_to "Submit", root_path, class:"btn btn-primary w-100" %>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-12 mt-4">
+                <%= link_to "Pay", dashboard_path, class: "btn btn-primary btn-large w-100"%>
+            </div>
+
+
+
+
+    </div>
+  </div><!-- END col-md-7-->
 </div>

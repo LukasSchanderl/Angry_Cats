@@ -1,5 +1,5 @@
 class CatsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: [:index, :show, :all]
 
   def index
     if params[:search].present?
@@ -9,15 +9,12 @@ class CatsController < ApplicationController
     #   binding.pry
           if params[:filters].present?
             # binding.pry
-            filters = JSON.parse(params[:filters])
+            # filters = JSON.parse(params[:filters])
             filters = JSON.parse params[:filters].gsub('=>', ':')
+
             # filters.each do |key, value|
             #     new_hash = {}
             #     new_hash.add(key => value)
-
-
-
-
             # filters = filters.gsub(/:(\w+)/){"\"#{$1}\""}
             # filters = filters.gsub('=>', ':')
             # filters = filters.gsub("nil", "null")
@@ -35,6 +32,7 @@ class CatsController < ApplicationController
 
             @cats = @cats.where(fluffiness: search_fluffiness)
             @cats = @cats.where(angriness_level: search_angriness_level)
+            raise
             @cats.foreach do |cat|
               if cat[:distance] <= search_distance
                 distace_cats = []
@@ -62,7 +60,14 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find(params[:id])
+    @booking = Booking.new
     @user = @cat.user
+
+    @sum_stars_angriness = @cat.angriness_level
+    @sum_no_stars_angriness = 5 - @sum_stars_angriness
+
+    @sum_stars_fluffiness = @cat.fluffiness
+    @sum_no_stars_fluffiness = 5 - @sum_stars_fluffiness
   end
 
   def new
@@ -79,8 +84,17 @@ class CatsController < ApplicationController
     end
   end
 
+  def all
+    @cats = Cat.all
+    return @cats
+  end
+
   private
   def cat_params
     params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo, :description)
+  end
+
+  def booking_params
+    params.require(:cat).permit(:name, :address, :angriness_level, :fluffiness, :color, :price, :photo)
   end
 end

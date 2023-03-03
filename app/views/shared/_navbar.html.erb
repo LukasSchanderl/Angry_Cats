@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container container-fluid">
+  <div class="container container-fluid my-2">
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "logo_angry_cat_3.svg" %>
     <% end %>
@@ -11,26 +11,32 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+        <li class="nav-item">
+            <%= link_to "Find a cat", cats_path(), class: "nav-link btn btn-primary" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+        <li class="nav-item">
+            <%= link_to "List your cat", new_cat_path(), class: "nav-link" %>
+          </li>
+          </\li>
+          <li class="nav-item active">
+            <%= link_to "Home", "/", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <%= image_tag "https://i.pinimg.com/736x/4d/8e/cc/4d8ecc6967b4a3d475be5c4d881c4d9c.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Dashboard", "", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>
+     <li class="nav-item">
+            <%= link_to "Rent a cat", cats_path(), class: "nav-link btn btn-primary" %>
+          </li>
         <li class="nav-item">
-            <%= link_to "Rent out a cat", new_cat_path, class: "nav-link" %>
+            <%= link_to "Rent out a cat", new_cat_path(), class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <%= link_to "Login", new_user_session_path(), class: "nav-link" %>
           </li>
         <% end %>
       </ul>

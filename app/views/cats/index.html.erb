@@ -11,159 +11,160 @@
   <% end %>
 </div>
 
-        <% if params[:search].present? && !@cats.empty? %>
-        <p><%= "You searched for:" %>
-        <i><%= (params[:search][:address]) %></i></p>
-        <% end %>
+  <% if params[:search].present? && !@cats.empty? %>
+  <p><%= "You searched for:" %>
+  <i><%= (params[:search][:address]) %></i></p>
+  <% end %>
+
+<div data-controller="search-filter">
+  <div class="accordion mb-5" id="accordionExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Search filters
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body filters">
 
 
-    <div class="accordion mb-5" id="accordionExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingOne">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            Search filters
-          </button>
-        </h2>
-        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-          <div class="accordion-body filters">
+            <!-- accordion content below //-->
+            <div>
 
+                  <h1 class="mx-auto">Filters</h1>
+                  <hr>
 
-              <!-- accordion content below //-->
-              <div>
+                  <form data-action="submit->search-filter#apply">
+                    <div class="row align-items-start">
 
-                    <h1 class="mx-auto">Filters</h1>
-                    <hr>
-
-                    <form data-controller="search-filter">
-                      <div class="row align-items-start">
-
-                          <div class="col-2">
-                            Colour
-                              <!-- checkboxes //-->
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault" data-search-filter-target="red">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                  Red
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" data-search-filter-target="black">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                  Black
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" data-search-filter-target="white">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                  White
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" data-search-filter-target="mixed">
-                                <label class="form-check-label" for="flexCheckChecked">
-                                  Mixed
-                                </label>
-                          </div>
-                      </div>
-
-
-                      <div class="col-2">
-                                <!-- sliders //-->
-                                <label for="fluffiness" class="form-label">Fluffiness</label>
-                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="fluffiness" data-search-filter-target="fluff">
-                                <output>3</output>
+                        <div class="col-2">
+                          Colour
+                            <!-- checkboxes //-->
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="red" id="flexCheckDefault" data-search-filter-target="red">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                Red
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="black" id="flexCheckChecked" data-search-filter-target="black">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Black
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="white" id="flexCheckChecked" data-search-filter-target="white">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                White
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="mixed" id="flexCheckChecked" data-search-filter-target="mixed">
+                              <label class="form-check-label" for="flexCheckChecked">
+                                Mixed
+                              </label>
                         </div>
+                    </div>
 
-                      <div class="col-2">
-                                <label for="angriness" class="form-label">Angriness</label>
-                                <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="angriness" data-search-filter-target="angry">
-                                <output>3</output>
+
+                    <div class="col-2">
+                              <!-- sliders //-->
+                              <label for="fluffiness" class="form-label">Fluffiness</label>
+                              <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="fluffiness" data-search-filter-target="fluff">
+                              <output>3</output>
                       </div>
 
-                      <div class="col-2">
-                                <label for="price" class="form-label">Price limit</label>
-                                <input class="form-range" type="range" value="20" min="1" max="200" step="1" oninput="this.nextElementSibling.value = this.value" id="price" data-search-filter-target="price">
-                                <output>20</output>
+                    <div class="col-2">
+                              <label for="angriness" class="form-label">Angriness</label>
+                              <input class="form-range" type="range" value="3" min="1" max="5" step="1" oninput="this.nextElementSibling.value = this.value" id="angriness" data-search-filter-target="angry">
+                              <output>3</output>
                     </div>
 
-                      <div class="col-4">
-                                <label for="distance" class="form-label">Distance (in km)</label>
-                                <input class="form-range" type="range" value="20" min="1" max="40" step="1" oninput="this.nextElementSibling.value = this.value" id="distance" data-search-filter-target="distance">
-                                <output>20</output>
-                                <br>
-
-                        <%# <form novalidate="novalidate" class="simple_form search" action="/cats" accept-charset="UTF-8" method="get">
-                          <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="pk.eyJ1Ijoic2NoYW5kbDAwMSIsImEiOiJjbGU3NGJ5YmkwMXprM29waGprd2w3ajRnIn0.gwxJvAnQ_bL9Pmq8GY9bZg" class="mb-3 string required search_address"><label class="form-label string required" for="search_address">Address <abbr title="required">*</abbr></label><input class="form-control string required" data-address-autocomplete-target="address" type="text" name="search[address]" id="search_address"></div>
-                          <input type="submit" name="commit" value="Search for a cat!" class="btn-primary" data-disable-with="Save Search">
-                        </form> %>
-                        <form id="theForm" action="/cats" accept-charset="UTF-8" method="get">
-
-                          <input type="hidden" data-search-filter-target="result" name="filters" value="">
-                          <input type="submit" value="apply filter" name="commit" class="btn btn-primary"
-                          data-action="click->search-filter#apply">
-                        </form>
-                    </div>
-
+                    <div class="col-2">
+                              <label for="price" class="form-label">Price limit</label>
+                              <input class="form-range" type="range" value="20" min="1" max="200" step="1" oninput="this.nextElementSibling.value = this.value" id="price" data-search-filter-target="price">
+                              <output>20</output>
                   </div>
 
+                    <div class="col-4">
+                              <label for="distance" class="form-label">Distance (in km)</label>
+                              <input class="form-range" type="range" value="20" min="1" max="40" step="1" oninput="this.nextElementSibling.value = this.value" id="distance" data-search-filter-target="distance">
+                              <output>20</output>
+                              <br>
 
-                  </form>
+                      <%# <form novalidate="novalidate" class="simple_form search" action="/cats" accept-charset="UTF-8" method="get">
+                        <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="pk.eyJ1Ijoic2NoYW5kbDAwMSIsImEiOiJjbGU3NGJ5YmkwMXprM29waGprd2w3ajRnIn0.gwxJvAnQ_bL9Pmq8GY9bZg" class="mb-3 string required search_address"><label class="form-label string required" for="search_address">Address <abbr title="required">*</abbr></label><input class="form-control string required" data-address-autocomplete-target="address" type="text" name="search[address]" id="search_address"></div>
+                        <input type="submit" name="commit" value="Search for a cat!" class="btn-primary" data-disable-with="Save Search">
+                      </form> %>
+                      <%# <form id="theForm" action="/cats" accept-charset="UTF-8" method="get">
+
+                        <input type="hidden" data-search-filter-target="result" name="filters" value="">
+                        <input type="submit" value="apply filter" name="commit" class="btn btn-primary"
+                        data-action="click->search-filter#apply">
+                      </form> %>
+                      <button class="btn btn-primary">Filter</button>
+                  </div>
+
                 </div>
-              <!-- accordion content end //-->
 
+
+                </form>
+              </div>
+            <!-- accordion content end //-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <br>
+    <!-- container for search result and map below //-->
+
+  <div class="container">
+    <div class="row align-items-start">
+    <!-- search result column below //-->
+      <div class="col-8">
+        <h1>Top angriest cats</h1>
+            <hr>
+            <div class="cards">
+            <% if @cats.empty? %>
+                <div>
+                  <%= "You searched for:" %>
+                  <i><%=
+                  # (params[:search][:address])
+                  %></i></div>
+                  <br>
+                  <div class="mt-3"><%= "No angry cats in this area (yet!)." %><br>
+                  <%= "Wait for some to barge in or try another area 🐈" %>
+                </div>
+              <% else %>
+                <% @cats.each do |cat| %>
+                  <div class="card" data-search-filter-target="cat">
+                  <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
+                    <div class="card-body">
+                    <h5 class="card-title"><%= cat.name %> </h5>
+                      <p class="card-text">
+                    <%= cat.description.first(90) %>...</p>
+                    <a href="/cats/<%= cat.id %>" class="btn btn-primary">Details</a>
+                  </div>
+                </div>
+              <% end %>
+              <% end %>
+          </div>
+      </div>
+
+      <!-- map column below //-->
+  <div class="col-4">
+    <h1>Find them on the map</h1>
+      <hr>
+        <div style="width: 100%; height: 600px;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
           </div>
         </div>
-      </div>
-    </div>
-
-
-
-
-<br>
-  <!-- container for search result and map below //-->
-
-<div class="container">
-  <div class="row align-items-start">
-  <!-- search result column below //-->
-    <div class="col-8">
-      <h1>Top angriest cats</h1>
-          <hr>
-          <div class="cards">
-
-           <% if @cats.empty? %>
-              <div>
-                <%= "You searched for:" %>
-                <i><%=
-                # (params[:search][:address])
-                %></i></div>
-                <br>
-                <div class="mt-3"><%= "No angry cats in this area (yet!)." %><br>
-                <%= "Wait for some to barge in or try another area 🐈" %>
-              </div>
-            <% else %>
-              <% @cats.each do |cat| %>
-                <div class="card">
-                <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
-                  <div class="card-body">
-                  <h5 class="card-title"><%= cat.name %> </h5>
-                    <p class="card-text">
-                  <%= cat.description.first(90) %>...</p>
-                  <a href="/cats/<%= cat.id %>" class="btn btn-primary">Details</a>
-                </div>
-              </div>
-            <% end %>
-             <% end %>
-        </div>
-    </div>
-
-    <!-- map column below //-->
-<div class="col-4">
-  <h1>Find them on the map</h1>
-    <hr>
-      <div style="width: 100%; height: 600px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-        </div>
-      </div>
+  </div>
 </div>

@@ -3,7 +3,48 @@ class CatsController < ApplicationController
 
   def index
     if params[:search].present?
+    #   binding.pry
+      @cats = Cat.all
       @cats = Cat.search_by_address(params[:search][:address])
+    #   binding.pry
+          if params[:filters].present?
+            # binding.pry
+            filters = JSON.parse(params[:filters])
+            filters = JSON.parse params[:filters].gsub('=>', ':')
+            # filters.each do |key, value|
+            #     new_hash = {}
+            #     new_hash.add(key => value)
+
+
+
+
+            # filters = filters.gsub(/:(\w+)/){"\"#{$1}\""}
+            # filters = filters.gsub('=>', ':')
+            # filters = filters.gsub("nil", "null")
+              # JSON.parse(filters)
+
+
+
+
+            search_fluffiness = filters[:fluffiness].to_i
+
+            search_angriness_level = filters[:angriness_level].to_i
+            search_distance = filters[:distance].to_i
+            search_price = filters[:price].to_i
+            search_colors = filters[:colors].to_i
+
+            @cats = @cats.where(fluffiness: search_fluffiness)
+            @cats = @cats.where(angriness_level: search_angriness_level)
+            @cats.foreach do |cat|
+              if cat[:distance] <= search_distance
+                distace_cats = []
+                distace_cats << cat
+                @cats = distace_cats
+              end
+            end
+
+          end
+
     else
       @cats = Cat.all
     end

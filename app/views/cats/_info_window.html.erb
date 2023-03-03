@@ -1,7 +1,9 @@
-<h2><%= cat.name %></h2>
-<p><%= cat.address %></p>
+<div style="width:100%" class="mb-3"><%= cl_image_tag cat.photo.key, height: 100, width: 100, crop: :fill, class:"cat-avatar" %></div>
 
-<div class="badge rounded-pill bg-primary fs-6">
-  <%= cat.name %>
-  <%= cat.address %>
-</div>
+
+
+<h4><%= cat.name %></h4>
+ <h6  style="margin-bottom:0">🏠 <%= cat.address %></h6>
+
+
+ <a href="/cats/<%= cat.id %>" class="btn btn-link">See <%= cat.name %></a>

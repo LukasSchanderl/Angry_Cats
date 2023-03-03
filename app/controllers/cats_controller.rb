@@ -2,15 +2,10 @@ class CatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-
-
-
-
     if params[:search].present?
-    #   binding.pry
       @cats = Cat.all
       @cats = Cat.search_by_address(params[:search][:address])
-    #   binding.pry
+
           if params[:filters].present?
             console.log(params[:filters])
             # binding.pry
@@ -19,10 +14,6 @@ class CatsController < ApplicationController
             # filters.each do |key, value|
             #     new_hash = {}
             #     new_hash.add(key => value)
-
-
-
-
             # filters = filters.gsub(/:(\w+)/){"\"#{$1}\""}
             # filters = filters.gsub('=>', ':')
             # filters = filters.gsub("nil", "null")

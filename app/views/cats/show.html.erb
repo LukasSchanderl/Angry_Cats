@@ -8,21 +8,21 @@
       </ol>
     </nav>
   </div>
-  <div class="container">
+  <div class="containe">
     <div class="row">
-      <div class="col-lg-6" style="padding:0">
+      <div class="col-lg-6" style="padding:0;">
         <%# <img class="photo-grid-img" src="https://cdn.shopify.com/s/files/1/0668/5887/7235/articles/Cat-upside-down-playing.jpg?v=1673878181" alt=""> %>
         <%#= cl_image_tag "https://source.unsplash.com/random/?mountains", style: "object-fit:cover; width:100%;aspect-ratio: 1/1" %>
         <%= cl_image_tag @cat.photo.key ? @cat.photo.key : "placeholder.png", class: "photo-grid-img" %>
       </div>
       <div class="col-lg-6">
         <div class="row">
-          <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://as2.ftcdn.net/v2/jpg/01/43/08/63/1000_F_143086380_rItZFPnSAhLVrOly1VcNtb5qjjBRxhLf.jpg" alt=""></div>
-          <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://img.myloview.de/fototapeten/portrait-of-angry-fluffy-cats-angry-cat-looking-700-200514460.jpg" alt=""></div>
+          <div class="col-md-6" style="padding:0;"><img class="photo-grid-img" src="https://as2.ftcdn.net/v2/jpg/01/43/08/63/1000_F_143086380_rItZFPnSAhLVrOly1VcNtb5qjjBRxhLf.jpg" alt=""></div>
+          <div class="col-md-6" style="padding:0;"><img class="photo-grid-img" src="https://img.myloview.de/fototapeten/portrait-of-angry-fluffy-cats-angry-cat-looking-700-200514460.jpg" alt=""></div>
         </div>
         <div class="row">
-          <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg" alt=""></div>
-          <div class="col-md-6" style="padding: 0"><img class="photo-grid-img" src="https://media-be.chewy.com/wp-content/uploads/Cat_Hates_Visitors_June_JV_MZ.jpg" alt=""></div>
+          <div class="col-md-6" style="padding:0;"><img class="photo-grid-img" src="https://t4.ftcdn.net/jpg/00/68/33/03/360_F_68330331_dKqChy33w0TcNHJEkqT5iw97QOX8la7F.jpg" alt=""></div>
+          <div class="col-md-6" style="padding:0;"><img class="photo-grid-img" src="https://media-be.chewy.com/wp-content/uploads/Cat_Hates_Visitors_June_JV_MZ.jpg" alt=""></div>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
 
             <div class="mt-3">
               <h5 class="review-stat my-2">Bio</h5>
-              <p>@cat.bio%</p>
+              <p><%= @cat.bio %></p>
             </div>
             <!-- END Bio-->
 
@@ -101,7 +101,7 @@
          <!--main-->
         <div class="col-lg-6 mt-4" id="main">
             <h3>Description</h3>
-            <p>@cat.description</p>
+            <p><%= @cat.description %></p>
         </div>
 
         <div class="col-lg-3 mt-4" id="aside-right">

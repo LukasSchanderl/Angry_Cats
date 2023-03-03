@@ -13,7 +13,11 @@ export default class extends Controller {
     fetch("/all")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data)
+
+      data.forEach((cat) => {
+        console.log(cat);
+      });
+      // console.log(data)
     })
 
     // const colours = []

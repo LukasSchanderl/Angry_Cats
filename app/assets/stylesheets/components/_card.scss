@@ -7,6 +7,26 @@
 .card{
   width: 22rem;
   justify-self: center;
+  border-radius: 8px;
+}
+
+.cat-card{
+  object-fit: cover!important;
+}
+
+.mixed{
+  background-image: linear-gradient(to left, red, orange, brown, black, grey, white, red);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.orange{
+  color: $orange;
+}
+
+.cat-card-body{
+  padding:30px!important;
 }
 
 

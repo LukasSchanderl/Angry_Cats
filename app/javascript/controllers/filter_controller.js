@@ -16,7 +16,7 @@ export default class extends Controller {
     "black",
     "white",
     "mixed",
-    "result",
+    "result"
   ];
 
   connect() {
@@ -26,11 +26,7 @@ export default class extends Controller {
 
   apply(e) {
     e.preventDefault();
-    fetch("/all")
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
+    console.log(this.resultTarget)
 
     // const colours = []
     // const fluff = this.fluffTarget.value
@@ -59,6 +55,5 @@ export default class extends Controller {
     // const inputs = { fluffiness: fluff, angriness_level: angry, distance: distance, price: price, colors: colours }
     // console.log(inputs)
     // this.resultTarget.value = JSON.stringify(inputs)
-    // console.log(this.resultTarget.value)
   }
 }

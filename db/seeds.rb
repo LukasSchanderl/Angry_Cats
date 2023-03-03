@@ -53,7 +53,7 @@ i = 0
     fluffiness: Faker::Number.within(range: 1..5),
     color: Faker::Color.color_name,
     price: Faker::Number.decimal(l_digits: 2),
-    description: Faker::Quote.matz)
+    bio: Faker::Quote.matz)
   cat.photo.attach(io: URI.open("https://cataas.com/cat"), filename: "test")
   cat.user = User.all[i]
   cat.save!

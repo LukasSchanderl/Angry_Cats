@@ -29,7 +29,8 @@
             </div>
           </li>
         <% else %>
-        <li class="nav-item">
+     <li class="nav-item">
+            <%= link_to "Rent a cat", cats_path(), class: "nav-link btn btn-primary" %>
           </li>
         <li class="nav-item">
             <%= link_to "Rent out a cat", new_cat_path(), class: "nav-link" %>

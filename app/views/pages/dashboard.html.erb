@@ -28,27 +28,31 @@
   <div class="custom-row mt-3">
     <% if params[:query] == "my_cats" || params[:query].nil? %>
 
-            <%= link_to new_cat_path do %>
-              <i class="fa-solid fa-plus add-card align-bottom" style="font-size: 4em; text-align: center; padding: 70px 0;"></i>
-            <% end %>
+  <!--Plus symbol to add a new cat-->
 
-        <% @cats.each do |cat| %>
-          <%= link_to cat_path(cat), class: "dashboard-card" do %>
+      <%= link_to new_cat_path do %>
+        <i class="fa-solid fa-plus add-card align-bottom" style="font-size: 4em; text-align: center; padding: 70px 0;"></i>
+      <% end %>
+
+
+  <!--Cat cards-->
+
+      <% @cats.each do |cat| %>
+        <%= link_to cat_path(cat), class: "dashboard-card" do %>
           <div>
             <%= cl_image_tag cat.photo.key, class: "search-page-card card-img-top" %>
-                  <div class="card-body">
-                     <h5 class="card-title"><%= cat.name %> </h5>
-                  </div>
-                </div>
-            <% end %>
-          <% end %>
-        </div>
-</div>
+              <div class="card-body">
+                <h5 class="card-title"><%= cat.name %> </h5>
+              </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
-<% elsif params[:query] == "current_rentals" %>
-  <p></p>
-
-  <% end %>
-</div>
+    <% elsif params[:query] == "current_rentals" %>
+      <br>
+      <p>No cats rented at the moment.</p>
+    <% end %>

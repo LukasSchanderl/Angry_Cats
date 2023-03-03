@@ -91,11 +91,15 @@
                                 <output>20</output>
                                 <br>
 
+                        <%# <form novalidate="novalidate" class="simple_form search" action="/cats" accept-charset="UTF-8" method="get">
+                          <div data-controller="address-autocomplete" data-address-autocomplete-api-key-value="pk.eyJ1Ijoic2NoYW5kbDAwMSIsImEiOiJjbGU3NGJ5YmkwMXprM29waGprd2w3ajRnIn0.gwxJvAnQ_bL9Pmq8GY9bZg" class="mb-3 string required search_address"><label class="form-label string required" for="search_address">Address <abbr title="required">*</abbr></label><input class="form-control string required" data-address-autocomplete-target="address" type="text" name="search[address]" id="search_address"></div>
+                          <input type="submit" name="commit" value="Search for a cat!" class="btn-primary" data-disable-with="Save Search">
+                        </form> %>
+                        <form id="theForm" action="/cats" accept-charset="UTF-8" method="get">
 
-                        <form id="theForm">
-                          <input type="hidden" name="filters" value="">
-                          <button type="submit" class="btn btn-primary"
-                          data-action="click->search-filter#apply">Apply filter</button>
+                          <input type="hidden" data-search-filter-target="result" name="filters" value="">
+                          <input type="submit" value="apply filter" name="commit" class="btn btn-primary"
+                          data-action="click->search-filter#apply">
                         </form>
                     </div>
 
@@ -128,7 +132,9 @@
            <% if @cats.empty? %>
               <div>
                 <%= "You searched for:" %>
-                <i><%= (params[:search][:address]) %></i></div>
+                <i><%=
+                # (params[:search][:address])
+                %></i></div>
                 <br>
                 <div class="mt-3"><%= "No angry cats in this area (yet!)." %><br>
                 <%= "Wait for some to barge in or try another area 🐈" %>

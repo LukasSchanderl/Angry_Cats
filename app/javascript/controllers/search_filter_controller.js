@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="search-filter"
 export default class extends Controller {
-  static targets = ["fluff", "angry", "distance", "price", "red", "black", "white", "mixed"]
+  static targets = ["fluff", "angry", "distance", "price", "red", "black", "white", "mixed", "result"]
   connect() {
   }
 
@@ -35,5 +35,7 @@ export default class extends Controller {
 
     const inputs = { fluffiness: fluff, angriness_level: angry, distance: distance, price: price, colors: colours }
     console.log(inputs)
+    this.resultTarget.value = JSON.stringify(inputs)
+    console.log(this.resultTarget.value)
   }
 }

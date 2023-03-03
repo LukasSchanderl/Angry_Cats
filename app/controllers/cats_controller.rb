@@ -9,15 +9,12 @@ class CatsController < ApplicationController
     #   binding.pry
           if params[:filters].present?
             # binding.pry
-            filters = JSON.parse(params[:filters])
+            # filters = JSON.parse(params[:filters])
             filters = JSON.parse params[:filters].gsub('=>', ':')
+
             # filters.each do |key, value|
             #     new_hash = {}
             #     new_hash.add(key => value)
-
-
-
-
             # filters = filters.gsub(/:(\w+)/){"\"#{$1}\""}
             # filters = filters.gsub('=>', ':')
             # filters = filters.gsub("nil", "null")

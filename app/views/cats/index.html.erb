@@ -128,11 +128,14 @@
                         <div>
                           <%= "You searched for:" %>
                           <i><%=
-                          # (params[:search][:address])
+                           (params[:search][:address])
                           %></i></div>
                           <br>
                           <div class="mt-3"><%= "No angry cats in this area (yet!)." %><br>
                           <%= "Wait for some to barge in or try another area 🐈" %>
+                          <br>
+                          <%= image_tag "404.jpg", class:"noresult" %>
+
                         </div>
                       <% else %>
                         <% @cats.each do |cat| %>
